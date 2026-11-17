@@ -24,7 +24,7 @@ JOIN sys.indexes AS i
 WHERE ips.index_id > 0             -- Exclude heaps
   AND ips.page_count >= 100        -- Ignore small indexes; adjust as needed
   AND i.name IS NOT NULL
-ORDER BY ips.avg_fragmentation_in_percent DESC;
+ORDER BY DB_NAME(ips.database_id) DESC;
 
 /* Sample result (values vary by database):
 
