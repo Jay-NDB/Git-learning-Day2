@@ -1,6 +1,7 @@
 /* SQL Server database health summary (read-only). */
 SELECT
 	d.name AS database_name,
+    db_id(d.name) AS database_id,
 	d.state_desc AS database_state,
 	d.user_access_desc AS user_access,
 	d.recovery_model_desc AS recovery_model,
@@ -25,7 +26,7 @@ OUTER APPLY (
 	WHERE database_name = d.name
 	  AND type = 'D'
 ) AS b
-ORDER BY d.name;
+
 
 /* Run separately during a maintenance window to check one database's integrity:
    DBCC CHECKDB ([YourDatabaseName]) WITH NO_INFOMSGS;
