@@ -69,6 +69,3 @@ finally {
 }
 #script ends here
 # no here
-#Rebase
-#merge
-#rebase and Merge
